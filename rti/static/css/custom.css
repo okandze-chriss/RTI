@@ -1,0 +1,99 @@
+.table-responsive{
+    overflow-x: hidden ! important;
+}
+
+.img-150 {
+    width: 150px !important
+}
+.page-header
+{
+    z-index: 8 !important;
+}
+
+.logo-customized{
+width: 24%;
+height: 10%;
+}
+
+.btn-print{
+     border-radius: 6px;
+     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+     background: #05182e;
+}
+.btn-print:hover{
+     background: #000;
+}
+
+.input-custom{
+margin-bottom: 8px;
+background: #fff;
+border: none;
+padding: 8px;
+border-bottom: 1px solid #efefef;
+border-radius: 0px;
+}
+
+.clip-custom{
+-webkit-clip-path: polygon(0% 0%, 92% 0, 100% 50%, 92% 100%, 0% 100%);
+clip-path: polygon(0% 0%, 92% 0, 100% 50%, 92% 100%, 0% 100%);
+    background: #0a3962;
+}
+
+.profile-text{
+color:black;
+font-weight: 500
+}
+
+.btn-new-user{
+   padding: 8px;
+   border:none;
+   border-radius: 10px;
+    background: #003;
+    box-shadow: rgb(0 0 0 / 2%) 0px 19px 30px, rgb(0 0 0 / 2%) 0px 15px 12px;
+   background:white;
+   transition: padding 1s;
+}
+.btn-new-user:hover{
+    background: black;
+    color: white;
+    }
+.b-bottom{
+border-bottom: 4px solid white;
+}
+.btn-new-user svg{
+    fill: black;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+.btn-new-user svg:hover{
+    fill: green;
+}
+.table-responsive{
+overflow-x:  none !important;
+    -webkit-overflow-scrolling: touch;
+}
+.new-btn{
+    font-size: 18px!important;
+    padding: 4px 8px!important;
+    width:48%!important;
+    height:50px!important;
+}
+.new-btn:hover{
+ background: #032853 !important;
+}
+.td-col-2{
+    border-left: 1px solid #efefef;
+    border-right: 1px solid #efefef;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.icon-ct{
+  color: black;
+  font-size: 14px;
+}
+.icon-title-color{
+  color: #f009;
+}
+}

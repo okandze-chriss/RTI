@@ -1,0 +1,58 @@
+{% extends 'dashboard/base.html' %}
+{% block title2 %}Accueil{% endblock %}
+{% block content %}
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card" style="border-radius: 40px !important;">
+                <div class="card-body">
+                    <div class="best-seller-table responsive-tbl">
+                        <div class="item">
+                            <div class="table-responsive product-list">
+                                <table class="table table-bordernone">
+                                    <thead>
+                                    <tr>
+                                        <th class="f-22">
+                                            Investisseurs
+                                        </th>
+                                        <th>Date</th>
+                                        <th>Product</th>
+                                        <th>Country</th>
+                                        <th>Total</th>
+                                        <th class="text-end">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for inves in range(1, 6)%}
+                                    <tr>
+                                        <td>
+                                            <div class="d-inline-block align-middle"><img
+                                                    class="img-40 m-r-15 rounded-circle align-top"
+                                                    src="../assets/images/avtar/7.jpg" alt="">
+                                                <div class="status-circle bg-primary"></div>
+                                                <div class="d-inline-block"><span>John keter</span>
+                                                    <p class="font-roboto">2019</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>06 August</td>
+                                        <td>CAP</td>
+                                        <td><i class="flag-icon flag-icon-gb"></i></td>
+                                        <td><span class="label">$5,08,652</span></td>
+                                        <td class="text-end"><i class="fa fa-check-circle"></i>Done</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+<!-- Container-fluid Ends-->
+{% endblock %}

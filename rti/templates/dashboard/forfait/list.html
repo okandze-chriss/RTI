@@ -1,0 +1,82 @@
+{% extends 'dashboard/base.html' %}
+{% block title2 %}Liste des forfaits{% endblock %}
+
+{% block title3 %}<i class="bi bi-currency-exchange icon-title-color"></i> Forfaits {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="card-title text-center mb-0">TOUS LES FORFAITS</h4>
+                    </div>
+                    <div class="col-12 col-md-6 text-end">
+                        <a class=" btn-new-user" href="{{ url_for('dashboard.forfait_new') }}">
+                               <i class="bi bi-plus-circle-dotted"></i><span> Ajouter</span>
+                        </a>
+                    </div>
+                </div>
+                    <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"
+                                                 data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a
+                            class="card-options-remove" href="#" data-bs-toggle="card-remove" data-bs-original-title=""
+                            title=""><i class="fe fe-x"></i></a>
+                    </div>
+            </div>
+            <div class="table-responsive add-project">
+                <table class="display dataTable">
+                    <thead>
+                    <tr>
+                        <th>Forfait</th>
+                        <th>Intervalle montant</th>
+                        <th>Taux</th>
+                        <th class="text-end">Duree</th>
+                        <th class="text-center">Ajouter taux</th>
+                        <th class="text-center">Editer</th>
+                        <th class="text-center">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for forf in  forfaits %}
+                     <tr>
+                         <td><a class="text-inherit" href="#" data-bs-original-title="" title=""><Strong>{{ forf.libelle }}</Strong></a></td>
+                        <td class="text-center">{{ forf.borne_inf | int  }} <br> à <br> {{ forf.borne_sup | int  }}</td>
+                        <td colspan="2" class="td-col-2">
+                            {% for taux in forf.taux %}
+                            <div class="row">
+                                <div class="col-md-4">{{ taux.taux_interet | int }} %</div>
+                                <span class="col-md-4 text-center">
+                                    <i class="bi bi-align-start"></i>
+                                    <i class="bi bi-align-end"></i>
+                                </span>
+                                <div class="col-md-4 text-end">{{taux.duree.libelle}}</div>
+                            </div>
+                            {% endfor %}
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="{{ url_for('dashboard.forfait_edit', id=forf.id) }}" >
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="{{ url_for('dashboard.forfait_edit', id=forf.id) }}" >
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger btn-sm" href="javascript:void(0)"
+                            onclick="if(confirm('Etes vous sur de vouloir supprimer ce forfait'))
+                                    window.location = '{{ url_for('dashboard.forfait_delete', id=forf.id) }}'; ">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

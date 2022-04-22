@@ -1,0 +1,195 @@
+{% extends 'dashboard/base.html' %}
+{% block title2 %}Modification du client{% endblock %}
+{% block title3 %}<i class="bi bi-back icon-title-color"></i>  Client : {{ user.prenom ~ ' '~  user.nom}} {% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="edit-profile">
+        <div class="row">
+            <div class="col-xl-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Mon Profil</h4>
+                        <div class="card-options">
+                            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i
+                                    class="fe fe-chevron-up"></i></a>
+                            <a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="profile-title">
+                                <div class="media">
+                                    <img class="img-150 rounded-circle" alt=""
+                                         src="{{ url_for('static', filename='/img/avatar/'+user.avatar ) }}">
+                                    <div class="media-body">
+                                        <h5 class="mb-1">{{ user.prenom }} {{ user.nom }}</h5><br>
+                                        <p>{{ user.profil.libelle }}</p>
+                                        <p>{{ user.email }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title text-center mb-0">Mise à jour Profil</h4>
+                        <div class="card-options">
+                            <a class="card-options-collapse" href="#"
+                               data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                            <a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                        </div>
+                    </div>
+                <form class="needs-validation" novalidate="" style="padding:20px;" enctype="multipart/form-data"
+                      method="POST" action="">
+                    <div class="card-body">
+                        {{ form.hidden_tag() }}
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="nom">Nom</label>
+                                {{ form.nom(placeholder="Votre nom", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="prenom">Prénom</label>
+                                {{ form.prenom(placeholder="Votre prénom", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                {{ form.email(placeholder="example@gmail.com", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.email.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="date_nais">Date de naissance</label>
+                                {{ form.date_nais(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.date_nais.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="tel">Numéro de téléphone </label>
+                                {{ form.tel(placeholder="Numéro de téléphone", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.tel.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="num_piece">Numéro de pièce</label>
+                                {{ form.num_piece(placeholder="Numéro de pièce", class="form-control input-custom")
+                                }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.num_piece.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="avatar">Avatar</label>
+                                {{ form.avatar(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.avatar.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="type_piece">Type de pièce</label>
+                                {{ form.type_piece(class="form-control input-custom")
+                                }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.type_piece.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="password">Mot de passe</label>
+                                {{ form.password(placeholder="************", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.password.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="confirm_password">Confirmez votre de passe</label>
+                                {{ form.confirm_password(placeholder="************", class="form-control input-custom")
+                                }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.confirm_password.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12 col-md-8 mb-3">
+                                <label class="form-label" for="photo_piece">Photo de la pièce</label>
+                                {{ form.photo_piece(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.photo_piece.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-4 text-center ">
+                                <img class="img-fluid" width="60" height="60" alt=""
+                                     src="{{ url_for('static', filename='/img/avatar/'+user.photo_piece ) }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" row card-footer" style="background-color: inherit !important;">
+                        <div class="col-12 text-center">
+                            <button class="btn-new-user w-100" style="border:none; background:#87e348c4 !important;"
+                                    type="submit" name="submit">Mettre à Jour
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

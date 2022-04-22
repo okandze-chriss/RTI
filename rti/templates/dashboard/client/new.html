@@ -1,0 +1,150 @@
+{% extends 'dashboard/base.html' %}
+{% block title2 %}Nouveau client {% endblock %}
+{% block title3 %} <i class="bi bi-person-plus icon-title-color"></i> Ajouter un client {% endblock %}
+
+{% block content %}
+<!-- Container-fluid starts-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                        <div class="text-center">
+                            <h5>NOUVEAU CLIENT </h5>
+                        </div>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" style="padding:20px;" novalidate="" method="POST" action="" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.nom.label(class="form-label") }}
+                                {{ form.nom(placeholder="Son nom", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.nom.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.prenom.label(class="form-label") }}
+                                {{ form.prenom(placeholder="Son prénom", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.prenom.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.email.label(class="form-label") }}
+                                {{ form.email(placeholder="Son email", class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.email.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.tel.label(class="form-label") }}
+                                {{ form.tel(placeholder="Son numero de téléphone", class="form-control input-custom")
+                                }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.tel.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.date_nais.label(class="form-label") }}
+                                {{ form.date_nais(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.date_nais.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.num_piece.label(class="form-label") }}
+                                {{ form.num_piece(placeholder="Son numero de pièce", class="form-control input-custom")
+                                }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.num_piece.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.profile.label(class="form-label") }}
+                                {{ form.profile(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.profile.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.type_piece.label(class="form-label") }}
+                                {{ form.type_piece(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.type_piece.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.photo_piece.label(class="form-label") }}
+                                {{ form.photo_piece(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.photo_piece.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                {{ form.avatar.label(class="form-label") }}
+                                {{ form.avatar(class="form-control input-custom") }}
+                                <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                <div class="valid-feedback">Parfait!</div>
+                                {% for message in form.avatar.errors %}
+                                <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <button class="btn btn-success w-100" type="submit">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
+{% endblock %}

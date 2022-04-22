@@ -1,0 +1,54 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Add projects And Upload</h4>
+                <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"
+                                             data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a
+                        class="card-options-remove" href="#" data-bs-toggle="card-remove" data-bs-original-title=""
+                        title=""><i class="fe fe-x"></i></a></div>
+            </div>
+            <div class="table-responsive add-project">
+                <table class="table card-table table-vcenter text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>Investisseur</th>
+                        <th>Date</th>
+                        <th>Taux d'interet</th>
+                        <th>Montant</th>
+                        <th class="text-center">Editer</th>
+                        <th class="text-center">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in range(1, 10) %}
+                         <tr>
+                        <td><a class="text-inherit" href="#" data-bs-original-title="" title="">Untrammelled
+                            prevents </a></td>
+                        <td>28 May 2018</td>
+                        <td><span class="status-icon bg-success"></span> Completed</td>
+                        <td>$56,908</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="javascript:void(0)" data-bs-original-title=""
+                               title="">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-bs-original-title=""
+                               title="">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

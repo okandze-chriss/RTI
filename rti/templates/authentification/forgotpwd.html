@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}MOT DE PASSE OUBLIE{% endblock %}
+{% block content %}
+    <div class="row m-0">
+        <div class="col-12 p-0">
+            <div class="login-card">
+                <div>
+                    <div class="login-main">
+                        <div>
+                            <a class="logo" href="{{ url_for('security.home') }}">
+                                <img class="for-light " width="300"
+                                     src="{{ url_for('static', filename='assets/images/logo/logonoir.png') }}"
+                                     alt="looginpage" height="180px">
+                                <img class="img-fluid for-dark " width="300"
+                                     src="{{ url_for('static', filename='assets/images/logo/logo_dark.png') }}"
+                                     alt="looginpage">
+                            </a>
+                        </div>
+                        <form class="theme-form" method="POST" action="">
+                               {{ form.hidden_tag() }}
+                            <h4>Mot de passe oublié</h4>
+                            <p>Entrer votre email pour initier la rénitialisation de votre mot de passe</p>
+                                                        <div class="text-center mt-2">
+                                {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                        {% for category, message in messages %}
+                                            <div class="alert alert-{{ category }} p-2">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Adresse e-mail</label>
+                                {{ form.email(class="form-control", placeholder="Exemple@gmail.com") }}
+                            </div>
+                            <div class="form-group mb-0">
+                                {# tu peux ajouter : Se rappeller de moi,  ici #}
+
+                                 {# <a class="link" href="{{ url_for('security.login') }}">Me connecter</a>#}
+                                <div class="text-end mt-3" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;">
+                                    <button class="btn btn-color-custom text-white btn-block w-100" style="background: #04233f !important;  padding: 8px !important;" type="submit">Soumettre</button>
+                                </div>
+                            </div>
+                            <p class="mt-4 mb-0 text-center">
+                                Vous connaissez déja votre mot de passe?
+                                <a class="ms-2"href="{{ url_for('security.login') }}">Connectez-vous</a>
+                            </p>
+
+                            <div class="text-center mt-2">
+                                {% for message in form.email.errors %}
+                                    <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

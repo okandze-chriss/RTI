@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+            <div class="login-card">
+                    <div class="login-main">
+                        <div>
+                            <a class="logo" href="{{ url_for('security.home') }}">
+                                <img class="for-light " width="300"
+                                     src="{{ url_for('static', filename='assets/images/logo/logonoir.png') }}"
+                                     alt="looginpage" height="180px">
+                                <img class="img-fluid for-dark " width="300"
+                                     src="{{ url_for('static', filename='assets/images/logo/logo_dark.png') }}"
+                                     alt="looginpage">
+                            </a>
+                        </div>
+
+                        <form class="theme-form" method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <h4>Connexion</h4>
+                            <p>Entrer votre email & mot de passe</p>
+
+                            <div class="form-group">
+                                <label class="col-form-label">Adresse e-mail</label>
+                                {{ form.email(class="form-control", placeholder="Test@gmail.com") }}
+                                {# <input class="form-control" type="email" required="" placeholder="Exemple@gmail.com">#}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label">Mot de passe</label>
+                                <div class="form-input position-relative">
+                                    {{ form.password(class="form-control", placeholder="*********") }}
+                                    <div class="show-hide"><span class="show"></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="checkbox p-0">
+                                    <input id="checkbox1" type="checkbox">
+                                    <label class="text-muted" for="checkbox1">Se rappeller de moi</label>
+                                </div>
+                                <a class="link" href="{{ url_for('security.reset_request') }}">Mot de passe oublié?</a>
+                                <div class="text-end mt-3">
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Connexion</button>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-2">
+                                {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                        {% for category, message in messages %}
+                                            {# <div class="alert alert-{{ category }}">#}
+                                            <div class="alert alert-{{ category }} p-2">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                            </div>
+                        </form>
+
+                    </div>
+            </div>
+
+{% endblock %}
+
+<style>
+    background-color: rgba(115, 102, 255, 0.15);
+Primary-color : #03233f;
+secodary-color : #000000;
+first-green : #87e348;
+second-green : #87e348c4;
+other blue: #0a3962
+
+input bg: #f3f3f3;
+box-shadow: rgb(0 0 0 / 24%) 0px 4px 8px;
+
+
+background: linear-gradient(26deg, #87e348c4 0%, #b3f487 100%);
+
+
+
+</style>
+
+  <div class="login-card">
+                    <div class="login-main">
+                        <div>
+                            <a class="logo" href="{{ url_for('security.home') }}">
+                                <img class="for-light " width="300"
+                                     src="{{ url_for('static', filename='assets/images/logo/logonoir.png') }}"
+                                     alt="looginpage" height="180px">
+                                <img class="img-fluid for-dark " width="300"
+                                     src="{{ url_for('static', filename='assets/images/logo/logo_dark.png') }}"
+                                     alt="looginpage">
+                            </a>
+                        </div>
+
+                        <form class="theme-form" method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <h4>Connexion</h4>
+                            <p>Entrer votre email & mot de passe</p>
+
+                            <div class="form-group">
+                                <label class="col-form-label">Adresse e-mail</label>
+                                {{ form.email(class="form-control", placeholder="Test@gmail.com") }}
+                                {# <input class="form-control" type="email" required="" placeholder="Exemple@gmail.com">#}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label">Mot de passe</label>
+                                <div class="form-input position-relative">
+                                    {{ form.password(class="form-control", placeholder="*********") }}
+                                    <div class="show-hide"><span class="show"></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="checkbox p-0">
+                                    <input id="checkbox1" type="checkbox">
+                                    <label class="text-muted" for="checkbox1">Se rappeller de moi</label>
+                                </div>
+                                <a class="link" href="{{ url_for('security.reset_request') }}">Mot de passe oublié?</a>
+                                <div class="text-end mt-3">
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Connexion</button>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-2">
+                                {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                        {% for category, message in messages %}
+                                            <div class="alert alert-{{ category }} p-2">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                        </form>
+                    </div>
+            </div>
+
+
+
+{% extends 'dashboard/base.html' %}
+{% block title2 %}Nouvel employé{% endblock %}
+{% block content %}
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Nouvel employé</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation" novalidate="" method="POST" action="" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 mb-3">
+                                    <label class="form-label" for="nom">Nom</label>
+                                    {{ form.nom(placeholder="Son nom", class="form-control") }}
+                                    <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                    <div class="valid-feedback">Parfait!</div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-3">
+                                    <label class="form-label" for="prenom">Prénom</label>
+                                    {{ form.prenom(placeholder="Son prénom", class="form-control") }}
+                                    <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                    <div class="valid-feedback">Parfait!</div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 mb-3">
+                                    <label class="form-label" for="email">Email</label>
+                                    {{ form.email(placeholder="Son email", class="form-control") }}
+                                    <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                    <div class="valid-feedback">Parfait!</div>
+                                    {% for message in form.email.errors %}
+                                        <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-12 col-md-6 mb-3">
+                                    <label class="form-label" for="password">Numero de téléphone </label>
+                                    {{ form.email.label(placeholder="Son email", class="form-label") }}
+                                       {{ form.email(placeholder="Son email", class="form-control") }}
+                                    <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                    <div class="valid-feedback">Parfait!</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <div class="checkbox p-0">
+                                        <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
+                                        <label class="form-check-label" for="invalidCheck">
+                                            En ajoutant cet employé, je comprends lui donner accès total au
+                                            tableau de bord.
+                                        </label>
+                                    </div>
+                                    <div class="invalid-feedback">You must agree before submitting.</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-success" type="submit">Enregistrer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+{% endblock %}

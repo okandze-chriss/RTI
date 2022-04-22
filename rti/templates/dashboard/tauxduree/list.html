@@ -1,0 +1,155 @@
+{% extends 'dashboard/base.html' %}
+{% block title2 %}Liste des taux et durées {% endblock %}
+{% block title3 %} <i class="bi bi-percent icon-title-color"></i> Durée & Taux{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-center mb-0">Liste des taux et leur durées</h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"
+                       data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a>
+                    <a class="card-options-remove" href="#" data-bs-toggle="card-remove" data-bs-original-title=""
+                        title=""><i class="fe fe-x"></i></a>
+                </div>
+            </div>
+            <div class="table-responsive add-project">
+                <table class="display mb-5" id="advance-1">
+                    <thead>
+                    <tr>
+                        <th>Taux D'intérêt</th>
+                        <th>Forfait</th>
+                        <th>Durée</th>
+                        <th class="text-center">Editer</th>
+                        <th class="text-center">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for t in  taux %}
+                     <tr>
+                        <td><a class="text-inherit" href="#" data-bs-original-title="" title="">{{ t.taux_interet | int }} %</a></td>
+                        <td>{{ t.forfait.libelle }}</td>
+                        <td>{{ t.duree.libelle }}</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="{{ url_for('dashboard.forfait_edit', id=t.id) }}" >
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger btn-sm" href="javascript:void(0)"
+                            onclick="if(confirm('Etes vous sur de vouloir supprimer ce forfait'))
+                                    window.location = '{{ url_for('dashboard.forfait_delete', id=t.id) }}'; ">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title text-center mb-0">Liste des durées </h4>
+                <div class="card-options">
+                    <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"
+                                             data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a
+                        class="card-options-remove" href="#" data-bs-toggle="card-remove" data-bs-original-title=""
+                        title=""><i class="fe fe-x"></i></a>
+                </div>
+            </div>
+            <div class="table-responsive add-project">
+                <table class="display dataTable mb-5">
+                    <thead>
+                    <tr>
+                        <th>Durée</th>
+                        <th class="text-center">Editer</th>
+                        <th class="text-center">Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for d in  duree %}
+                     <tr>
+                        <td><a class="text-inherit" href="#" data-bs-original-title="" title="">{{ d.libelle }}</a></td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm"
+                               href="{{ url_for('dashboard.taux_duree_list', id=d.id) }}"
+                               data-bs-toggle="modal"
+                               data-original-title="test" data-bs-target="#exampleModal"
+                            >
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger btn-sm" href="javascript:void(0)"
+                            onclick="if(confirm('Etes vous sur de vouloir supprimer ce forfait'))
+                                    window.location = '{{ url_for('dashboard.forfait_delete', id=d.id) }}'; ">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog " role="document">
+                            <form action="" method="post">
+                                {{ formDuree.csrf_token() }}
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Nouvelle Durée</h5>
+                                        <button class="btn-close" type="button" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{ formDuree.nombre.label(class="form-label") }}
+                                                    {{ formDuree.nombre(class="form-control", value = (d.libelle[0] | int) ) }}
+                                                    <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                                    <div class="valid-feedback">Parfait!</div>
+                                                    {% for message in formDuree.nombre.errors %}
+                                                    <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                                        {{ message }}
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{ formDuree.duree.label(class="form-label") }}
+                                                    {{ formDuree.duree(class="form-control") }}
+                                                    <div class="invalid-feedback">Veuillez remplir ce champ!</div>
+                                                    <div class="valid-feedback">Parfait!</div>
+                                                    {% for message in formDuree.duree.errors %}
+                                                    <div class="border text-center text-danger bg-light p-2 mb-1 rounded">
+                                                        {{ message }}
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <button class="new-btn btn-lg btn-primary" type="button"
+                                                data-bs-dismiss="modal">Close
+                                        </button>
+                                        <button class="new-btn btn-lg btn-secondary" type="submit">Valider</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
