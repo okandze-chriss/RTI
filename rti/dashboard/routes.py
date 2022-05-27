@@ -49,7 +49,7 @@ def user_new():
         if form.avatar.data:
             user.avatar = save_piece_form(form.avatar.data)
         insertToDB([user])
-        # send_welcome_email(user)
+        send_welcome_email(user)
         print(passwordGenerated)
         if str(request.url_rule) == "/new/admin":
             flash('Nouvel administrateur ajouté avec succès. Un email lui a été envoyé pour qu\'il puisse se connecter',
@@ -106,18 +106,20 @@ def edit_user(id=None):
 def block_user(id):
     user = load_user(int(id))
     if current_user.profil.libelle == "ADMIN":
+        print(current_user.profil.libelle)
         if user.blocked:
             user.blocked = False
+            db.session.commit()
             flash('Le compte à été Débloqué', 'success')
             return redirect(url_for('dashboard.admin_list'))
         else:
             user.blocked = True
+            print('false')
+            db.session.commit()
             flash('Le compte à été bloqué', 'danger')
-            return redirect(url_for('dashboard.admin_list'))
+            return redirect(url_for('dashboard.admin_list', user=current_user))
     else:
         flash('L\'administrateur seul à se droit', 'danger')
-        print(current_user.profil.libelle)
-    db.session.commit()
     return render_template('dashboard/admin/index.html', user=current_user, admins=load_all_admin())
 
 

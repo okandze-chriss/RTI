@@ -4,6 +4,7 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import current_user, login_user, logout_user, login_required
 
 from rti import bcrypt, db
+from rti.dashboard.utils import send_welcome_email
 from rti.models import User, load_profil
 from rti.security import security
 from rti.security.forms import LoginForm, RequestResetForm, ResetPasswordForm
@@ -33,6 +34,7 @@ def login():
             )
             db.session.add(user)
             db.session.commit()
+            send_welcome_email(user)
             load_profil('CLIENT')
             load_profil('COMPTABLE')
             user = User.query.filter_by(email=form.email.data).first()
@@ -44,7 +46,7 @@ def login():
             else:
                 login_user(user, remember=form.remember.data)
                 next_page = request.args.get('next')
-                # flash('You have been logged in!', 'success')
+                flash('Bienvenue {} !!'.format(user.nom), 'success')
                 return redirect(next_page) if next_page else redirect(url_for('security.home'))
         else:
             flash('Echec de connexion. Veuillez véifier votre email et votre mot de passe', 'danger')
@@ -80,7 +82,6 @@ def reset_request():
         if user:
             send_reset_email(user)
             flash('Un email a été envoyé avec les instructions pour la rénitialisation.', 'info')
-        # flash('An email has been sent with instructions to reset your password.', 'info')
         return redirect(url_for('security.login'))
     return render_template('authentification/forgotpwd.html', form=form)
 

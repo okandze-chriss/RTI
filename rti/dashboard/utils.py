@@ -45,8 +45,8 @@ def insertToDB(objects):
 # SEND A WELCOME MESSAGE TO THE USER
 def send_welcome_email(user):
     token = user.get_reset_token()
-    msg = Message('Bienvenue ' + user.prenom + ' - rti Classroom',
-                  sender='jordyokandze77@gmail.com',
+    msg = Message('Bienvenue ' + user.prenom + ' ' + user.nom + ' sur RTI',
+                  sender='softcodifier@gmail.com',
                   recipients=[user.email])
     body = """\
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -128,7 +128,8 @@ def send_welcome_email(user):
                       <td class="es-m-p0r" valign="top" align="center" style="padding:0;Margin:0;width:560px"> 
                        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr> 
-                          <td align="center" style="padding:0;Margin:0;padding-bottom:20px;font-size:0px"><img src="https://tophpk.stripocdn.email/content/guids/CABINET_41b55dad376b965227c429d2c1233cda/images/logo.png" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" width="250" title="Logo"></td> 
+                          <td align="center" style="padding:0;Margin:0;padding-bottom:20px;font-size:0px">
+                          <img src="https://ik.imagekit.io/u2mfdz2e7/images/logonoir_gVRgvld41.png" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" width="250" title="Logo"></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -142,24 +143,21 @@ def send_welcome_email(user):
               <td align="center" style="padding:0;Margin:0"> 
                <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px"> 
                  <tr> 
-                  <td align="left" style="Margin:0;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px"> 
+                  <td align="left" style="Margin:0;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"> 
                    <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr> 
                       <td align="center" valign="top" style="padding:0;Margin:0;width:560px"> 
                        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                          <tr> 
-                          <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0px"><img src="https://tophpk.stripocdn.email/content/guids/CABINET_67e080d830d87c17802bd9b4fe1c0912/images/55191618237638326.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="100"></td> 
-                         </tr> 
-                         <tr> 
                           <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:10px"><h1 style="Margin:0;line-height:30px;mso-line-height-rule:exactly;font-family:'playfair display', georgia, 'times new roman', serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333">Vous avez été ajouté en tant qu'administrateur</h1></td> 
                          </tr> 
                          <tr> 
-                          <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br>Votre email a été ajouté en tant qu'administrateur de la plateforme de l'rti. Veuillez cliquer&nbsp;le lien suivant afin d'initier la procédure de rénitialisation de votre mot de passe pour votre première connexion. <br>👇🏻👇🏻👇🏻<br><br></p></td> 
+                          <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br>Votre email a été ajouté en tant qu'administrateur de la plateforme de Real Taste Industry (RTI). Veuillez cliquer&nbsp;le lien suivant afin d'initier la procédure de rénitialisation de votre mot de passe pour votre première connexion. <br>👇🏻👇🏻👇🏻<br><br></p></td> 
                          </tr> 
                          <tr> 
-                          <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><span class="es-button-border" style="border-style:solid;border-color:#2CB543;background:#b7ce02;border-width:0px;display:inline-block;border-radius:6px;width:auto"><a href=" """
+                          <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><span class="es-button-border" style="border-style:solid;border-color:#2CB543;background:#053a6a;border-width:0px;display:inline-block;border-radius:6px;width:auto"><a href=" """
     body += url_for('security.reset_request', _external=True)
-    body += """ " class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;border-style:solid;border-color:#b7ce02;border-width:10px 30px 10px 30px;display:inline-block;background:#b7ce02;border-radius:6px;font-family:'lucida sans unicode', 'lucida grande', sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center;border-left-width:30px;border-right-width:30px">DEMANDER UNE RENITIALISATION DE MOT DE PASSE</a></span></td>
+    body += """ " class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;border-style:solid;border-color:#053a6a;border-width:10px 30px 10px 30px;display:inline-block;background:#053a6a;border-radius:6px;font-family:'lucida sans unicode', 'lucida grande', sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center;border-left-width:30px;border-right-width:30px">Réinitialiser votre mot de passe !</a></span></td>
                          </tr> 
                          <tr> 
                           <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br>Si vous n'avez pas fait cette demande, ignorez simplement cet e-mail et aucun changement ne sera effectué.<br></p></td> 

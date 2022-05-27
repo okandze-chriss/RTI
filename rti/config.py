@@ -8,8 +8,8 @@ class Config:
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
     OAUTHLIB_INSECURE_TRANSPORT = 1
-    MAIL_USERNAME = 'jordyokandze77@gmail.com'
-    MAIL_PASSWORD = '<%adriana%>'
+    MAIL_USERNAME = 'softcodifier@gmail.com'
+    MAIL_PASSWORD = 'Softcodifier78'
     DROPZONE_ALLOWED_FILE_CUSTOM = True
     # DROPZONE_ALLOWED_FILE_TYPE = 'image/*, .pdf, .txt'
     DROPZONE_ALLOWED_FILE_TYPE = '.xls, .xlsx'
